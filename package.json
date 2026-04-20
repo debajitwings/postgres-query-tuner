@@ -1,0 +1,36 @@
+{
+  "name": "postgres-query-tuner",
+  "version": "1.0.0",
+  "description": "AI-powered PostgreSQL query tuner with log analyzer and student admission system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "docker:build": "docker build -t postgres-query-tuner .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env postgres-query-tuner",
+    "docker:compose": "docker-compose up -d",
+    "docker:stop": "docker-compose down"
+  },
+  "keywords": [
+    "postgresql",
+    "query-optimization",
+    "ai",
+    "claude",
+    "database",
+    "performance"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.1009.0",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}

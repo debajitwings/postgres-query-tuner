@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+.upload-section {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.upload-box {
+  border: 3px dashed #667eea;
+  border-radius: 8px;
+  padding: 60px 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #667eea;
+}
+
+.upload-box:hover {
+  background: #f8f9ff;
+  border-color: #764ba2;
+}
+
+.upload-box.dragover {
+  background: #f0f4ff;
+  border-color: #764ba2;
+  transform: scale(1.02);
+}
+
+.upload-box svg {
+  margin-bottom: 20px;
+}
+
+.upload-box h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.upload-box p {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.sample-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.secondary-btn {
+  padding: 12px 24px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+  background: #e0e0e0;
+}
+
+.analysis-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.log-preview, .results {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.log-preview h2, .results h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.log-content {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 20px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  max-height: 500px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.issue-card {
+  background: #fff;
+  border-left: 4px solid #dc3545;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.issue-card.warning {
+  border-left-color: #ffc107;
+}
+
+.issue-card.info {
+  border-left-color: #17a2b8;
+}
+
+.issue-card.success {
+  border-left-color: #28a745;
+}
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.severity-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.severity-badge.critical {
+  background: #dc3545;
+  color: white;
+}
+
+.severity-badge.warning {
+  background: #ffc107;
+  color: #333;
+}
+
+.severity-badge.info {
+  background: #17a2b8;
+  color: white;
+}
+
+.issue-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.issue-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.issue-location {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+  margin-bottom: 15px;
+  color: #495057;
+}
+
+.recommendations {
+  margin-top: 15px;
+}
+
+.recommendations h4 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.recommendations ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.recommendations li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  color: #555;
+}
+
+.recommendations li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+  .analysis-section {
+    grid-template-columns: 1fr;
+  }
+}

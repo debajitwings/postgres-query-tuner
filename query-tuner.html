@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostgreSQL Query Tuner</title>
+  <link rel="stylesheet" href="tuner-styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>⚡ PostgreSQL Query Tuner & Optimizer</h1>
+      <p>AI-Powered query analysis with Claude/GPT-4 - Analyze, optimize, and tune your SQL queries for maximum performance</p>
+      <div class="ai-badge">🤖 Powered by AI</div>
+      <div id="mcpStatus" class="mcp-status" style="display: none;">
+        <span class="status-indicator"></span>
+        <span class="status-text">MCP: Connected to Database</span>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="input-section">
+        <div class="section-header">
+          <h2>Input Query</h2>
+          <div class="actions">
+            <button id="loadSampleQuery" class="btn-secondary">Load Sample</button>
+            <button id="analyzeBtn" class="btn-primary">Analyze & Optimize</button>
+          </div>
+        </div>
+        <textarea id="queryInput" placeholder="Paste your PostgreSQL query here..."></textarea>
+        
+        <div class="explain-section">
+          <h3>EXPLAIN Output (Optional)</h3>
+          <textarea id="explainInput" placeholder="Paste EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) output here..."></textarea>
+        </div>
+      </div>
+
+      <div id="resultsContainer" class="results-container" style="display: none;">
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">📊</div>
+            <div class="metric-value" id="costReduction">-</div>
+            <div class="metric-label">Cost Reduction</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">⚠️</div>
+            <div class="metric-value" id="issuesFound">-</div>
+            <div class="metric-label">Issues Found</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🎯</div>
+            <div class="metric-value" id="optimizations">-</div>
+            <div class="metric-label">Optimizations</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">⏱️</div>
+            <div class="metric-value" id="timeImprovement">-</div>
+            <div class="metric-label">Time Saved</div>
+          </div>
+        </div>
+
+        <div class="comparison-section">
+          <div class="query-panel">
+            <h3>Original Query</h3>
+            <pre id="originalQuery"></pre>
+          </div>
+          <div class="query-panel optimized">
+            <h3>Optimized Query</h3>
+            <pre id="optimizedQuery"></pre>
+            <button id="copyOptimized" class="btn-copy">Copy</button>
+          </div>
+        </div>
+
+        <div class="tuning-trace">
+          <h3>🔍 Tuning Trace - What Changed & Why</h3>
+          <div id="tuningSteps"></div>
+        </div>
+
+        <div class="issues-section">
+          <h3>⚠️ Bottlenecks & Issues Detected</h3>
+          <div id="issuesList"></div>
+        </div>
+
+        <div class="recommendations-section">
+          <h3>💡 Recommendations & Best Practices</h3>
+          <div id="recommendationsList"></div>
+        </div>
+
+        <div class="execution-plan">
+          <h3>📈 Execution Plan Analysis</h3>
+          <div id="planVisualization"></div>
+        </div>
+
+        <div class="wait-events">
+          <h3>⏳ Wait Events Analysis</h3>
+          <div id="waitEventsList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="tuner.js"></script>
+</body>
+</html>

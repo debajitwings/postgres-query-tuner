@@ -1,0 +1,67 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Create .env file
+      run: |
+        echo "NODE_ENV=production" >> .env
+        echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
+        echo "AI_PROVIDER=anthropic" >> .env
+    
+    - name: Build Docker image
+      run: docker build -t postgres-query-tuner .
+    
+    - name: Run health check
+      run: |
+        docker run -d -p 3000:3000 --name test-container postgres-query-tuner
+        sleep 5
+        curl -f http://localhost:3000/health || exit 1
+        docker stop test-container
+    
+    # Uncomment and configure for your deployment target
+    
+    # Deploy to Docker Hub
+    # - name: Login to Docker Hub
+    #   uses: docker/login-action@v2
+    #   with:
+    #     username: ${{ secrets.DOCKER_USERNAME }}
+    #     password: ${{ secrets.DOCKER_PASSWORD }}
+    # 
+    # - name: Push to Docker Hub
+    #   run: |
+    #     docker tag postgres-query-tuner ${{ secrets.DOCKER_USERNAME }}/postgres-query-tuner:latest
+    #     docker push ${{ secrets.DOCKER_USERNAME }}/postgres-query-tuner:latest
+    
+    # Deploy to AWS EC2
+    # - name: Deploy to EC2
+    #   env:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     SERVER_IP: ${{ secrets.SERVER_IP }}
+    #   run: |
+    #     echo "$SSH_PRIVATE_KEY" > key.pem
+    #     chmod 600 key.pem
+    #     scp -i key.pem -r * user@$SERVER_IP:/app/
+    #     ssh -i key.pem user@$SERVER_IP "cd /app && npm install && pm2 restart postgres-query-tuner"
+    
+    - name: Deployment complete
+      run: echo "✅ Deployment successful!"

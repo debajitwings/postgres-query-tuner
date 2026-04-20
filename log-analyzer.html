@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostgreSQL Log Analyzer</title>
+  <link rel="stylesheet" href="analyzer-styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔍 PostgreSQL Log Analyzer</h1>
+      <p>Upload your PostgreSQL error logs for instant analysis and recommendations</p>
+    </header>
+
+    <div class="upload-section">
+      <div class="upload-box" id="uploadBox">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+        </svg>
+        <h3>Drop log file here or click to browse</h3>
+        <p>Supports .log, .txt files</p>
+        <input type="file" id="fileInput" accept=".log,.txt" hidden>
+      </div>
+      
+      <div class="sample-section">
+        <button id="loadSample" class="secondary-btn">Load Sample Log</button>
+      </div>
+    </div>
+
+    <div class="analysis-section" id="analysisSection" style="display: none;">
+      <div class="log-preview">
+        <h2>Log Content</h2>
+        <div class="log-content" id="logContent"></div>
+      </div>
+
+      <div class="results">
+        <h2>Analysis Results</h2>
+        <div id="analysisResults">
+          <div class="loading">Analyzing log file...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="analyzer.js"></script>
+</body>
+</html>

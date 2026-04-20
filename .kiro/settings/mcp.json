@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "/Users/debajitc/.local/bin/uvx",
+      "args": ["mcp-server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://username:password@localhost:5432/database_name"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "query",
+        "list_tables",
+        "describe_table",
+        "get_table_info"
+      ]
+    }
+  }
+}

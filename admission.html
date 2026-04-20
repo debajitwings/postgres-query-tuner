@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Admission System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Student Admission Portal</h1>
+    
+    <div class="form-section">
+      <h2>Submit Application</h2>
+      <form id="admissionForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="tel" id="phone" placeholder="Phone Number">
+        <select id="course" required>
+          <option value="">Select Course</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Business">Business</option>
+          <option value="Medicine">Medicine</option>
+        </select>
+        <button type="submit">Submit Application</button>
+      </form>
+      <div id="message"></div>
+    </div>
+
+    <div class="admin-section">
+      <h2>Applications</h2>
+      <button onclick="loadApplications()">Refresh</button>
+      <div id="applicationsList"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
