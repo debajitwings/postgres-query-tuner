@@ -293,6 +293,4 @@ MIT
 
 ## Author
 
-**Developed by Debajit Chandra**
-
-© 2024-2026 Debajit Chandra. All rights reserved.
+Developed by Debajit Chandra
