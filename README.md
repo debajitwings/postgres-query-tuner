@@ -288,3 +288,11 @@ See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for full deployment options.
 ## License
 
 MIT
+
+---
+
+## Author
+
+**Developed by Debajit Chandra**
+
+© 2024-2026 Debajit Chandra. All rights reserved.
